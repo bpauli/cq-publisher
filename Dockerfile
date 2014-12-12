@@ -41,7 +41,7 @@ ONBUILD RUN python aemInstaller.py -i cq-publish-4503.jar -r publisher -p 4503
 
 WORKDIR /aem/crx-quickstart/bin
 #Replaces the port within the quickstart file with the standard publisher port
-ONBUILD ONBUILD RUN cp quickstart quickstart.original
+ONBUILD RUN cp quickstart quickstart.original
 ONBUILD RUN cat quickstart.original | sed "s|4502|4503|g" > quickstart
 
 EXPOSE 4503
