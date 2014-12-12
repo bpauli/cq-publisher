@@ -34,12 +34,12 @@ ONBUILD ADD cq-publish-4503.jar /aem/cq-publish-4503.jar
 ONBUILD ADD license.properties /aem/license.properties
 
 # Extracts AEM
-WORKDIR /aem
+ONBUILD WORKDIR /aem
 ONBUILD RUN java -XX:MaxPermSize=256m -Xmx1024M -jar cq-publish-4503.jar -unpack -r nosamplecontent
 ONBUILD ADD install /aem/crx-quickstart/install
 ONBUILD RUN python aemInstaller.py -i cq-publish-4503.jar -r publisher -p 4503
 
-WORKDIR /aem/crx-quickstart/bin
+ONBUILD WORKDIR /aem/crx-quickstart/bin
 #Replaces the port within the quickstart file with the standard publisher port
 ONBUILD RUN cp quickstart quickstart.original
 ONBUILD RUN cat quickstart.original | sed "s|4502|4503|g" > quickstart
