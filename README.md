@@ -8,22 +8,21 @@ to be run within a Docker container. This Docker image is highly inspired by [gg
 > *You must have a copy of the CQ/AEM installation Media and a valid license file
 
 1. Copy cq-publish-4503.jar and license.properties to the current directory
-2. Create a subdirectory named **install** and copy additional content packages e.g. hotfixes, featurepacks to it (optional, this packages will be installed automatically during the build). 
-3. Create a local Dockerfile and insert the following content:
+2. Create a local Dockerfile and insert the following content:
 ```
 # DOCKER-VERSION 1.0.0
 FROM bpauli/cq-publisher
 MAINTAINER <your_username>
 ```
-4. Then execute your build:
+3. Then execute your build:
 ```bash
 docker build --tag="<your_build_tag>" .
 ```
-5. Run your image with:
+4. Run your image with:
 ```bash
 $ docker run -p 4503:4503 -d "<your_build_tag>"
 ```
-6. Validate your running instance with:
+5. Validate your running instance with:
 ```bash
 $ docker ps -l
 ```
