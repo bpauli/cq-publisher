@@ -36,8 +36,6 @@ ONBUILD ADD license.properties /aem/license.properties
 # Extracts AEM
 ONBUILD WORKDIR /aem
 ONBUILD RUN java -XX:MaxPermSize=256m -Xmx1024M -jar cq-publish-4503.jar -unpack -r nosamplecontent
-ONBUILD RUND mkdir -p install
-ONBUILD ADD install /aem/crx-quickstart/install
 ONBUILD RUN python aemInstaller.py -i cq-publish-4503.jar -r publisher -p 4503
 
 ONBUILD WORKDIR /aem/crx-quickstart/bin
